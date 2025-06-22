@@ -10,7 +10,7 @@ interface VideoMenuProps {
 };
 
 // TODO: implement whats left
-export const VideoMenu = ({ videoId, variant, onRemove }: VideoMenuProps) => {
+export const VideoMenu = ({ videoId, variant = "ghost", onRemove }: VideoMenuProps) => {
   const onShare = () => {
     // TODO: Change if deploying outside of VERCEL
     const fullUrl = `${process.env.VERCEL_URL || "http://localhost:3000"}/videos/${videoId}`;
