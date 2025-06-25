@@ -28,8 +28,8 @@ const items = [
     auth: true,
   },
   {
-    title: "All playists",
-    url: "/playists",
+    title: "All playlists",
+    url: "/playlists",
     icon: ListVideoIcon,
     auth: true,
   },
