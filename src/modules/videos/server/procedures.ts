@@ -21,14 +21,14 @@ export const videosRouter = createTRPCRouter({
       })
     )
     .query(async ({ input, ctx }) => {
-      const { id: UserId } = ctx.user;
+      const { id: userId } = ctx.user;
       const { cursor, limit } = input;
 
       const viewerSubscriptions = db.$with("viewer_subscriptions").as(
         db
           .select({ userId: subscriptions.creatorId })
           .from(subscriptions)
-          .where(eq(subscriptions.viewerId, UserId))
+          .where(eq(subscriptions.viewerId, userId))
       )
 
       const data = await db

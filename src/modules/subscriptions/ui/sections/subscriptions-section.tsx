@@ -5,8 +5,6 @@ import { trpc } from "@/trpc/client";
 import { DEFAULT_LIMIT } from "@/constants";
 import { ErrorBoundary } from "react-error-boundary";
 import { InfiniteScroll } from "@/components/infinite-scroll";
-import { VideoGridCardSkeleton } from "@/modules/videos/ui/components/video-grid-card";
-import { VideoRowCardSkeleton } from "@/modules/videos/ui/components/video-row-card";
 import { toast } from "sonner";
 import Link from "next/link";
 import { SubscriptionItem, SubscriptionItemSkeleton } from "../components/subscription-item";
@@ -47,7 +45,7 @@ const SubscriptionsSectionSuspense = () => {
       utils.videos.getManySubscribed.invalidate();
       utils.users.getOne.invalidate({ id: data.creatorId });
     },
-    onError: (error) => {
+    onError: () => {
       toast.error("Something went wrong");
     },
   });

@@ -5,7 +5,6 @@ import { trpc } from "@/trpc/client";
 import { DEFAULT_LIMIT } from "@/constants";
 import { ErrorBoundary } from "react-error-boundary";
 import { InfiniteScroll } from "@/components/infinite-scroll";
-import { VideoGridCardSkeleton } from "@/modules/videos/ui/components/video-grid-card";
 import { PlaylistGridCard, PlaylistGridCardSkeleton } from "../components/playlist-grid-card";
 
 export const PlaylistsSection = () => {
