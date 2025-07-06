@@ -12,7 +12,7 @@ interface CategoriesSectionProps {
 
 export const CategoriesSection = ({ categoryId }: CategoriesSectionProps) => {
   return (
-    <Suspense fallback={<CategoriesSkeleton />}>
+    <Suspense fallback={<CategoriesSectionSkeleton />}>
       <ErrorBoundary fallback={<p>Error...</p>}>
         <CategoriesSectionSuspense categoryId={categoryId} />
       </ErrorBoundary>
@@ -20,7 +20,7 @@ export const CategoriesSection = ({ categoryId }: CategoriesSectionProps) => {
   )
 }
 
-const CategoriesSkeleton = () => {
+export const CategoriesSectionSkeleton = () => {
   return <FilterCarousel isLoading data={[]} onSelect={() => { }} />;
 };
 
@@ -46,4 +46,4 @@ const CategoriesSectionSuspense = ({ categoryId }: CategoriesSectionProps) => {
   };
 
   return <FilterCarousel onSelect={onSelect} value={categoryId} data={data} />
-}
+};

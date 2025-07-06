@@ -23,7 +23,7 @@ export const VideosSection = (props: VideosSectionProps) => {
   );
 };
 
-const VideosSectionSkeleton = () => {
+export const VideosSectionSkeleton = () => {
   return (
     <div>
       <div className="flex flex-col gap-4 gap-y-10 md:hidden">
@@ -33,7 +33,7 @@ const VideosSectionSkeleton = () => {
       </div>
       <div className="hidden flex-col gap-4 md:flex">
         {Array.from({ length: 18 }).map((_, index) => (
-          <VideoRowCardSkeleton key={index} />
+          <VideoRowCardSkeleton key={index} size="compact" />
         ))}
       </div>
     </div>
@@ -62,7 +62,7 @@ const VideosSectionSuspense = ({ playlistId }: VideosSectionProps) => {
   });
 
   return (
-    <div>
+    <>
       <div className="flex flex-col gap-4 gap-y-10 md:hidden">
         {videos.pages
           .flatMap((page) => page.items)
@@ -93,6 +93,6 @@ const VideosSectionSuspense = ({ playlistId }: VideosSectionProps) => {
         isFetchingNextPage={query.isFetchingNextPage}
         fetchNextPage={query.fetchNextPage}
       />
-    </div>
+    </>
   );
 };

@@ -101,7 +101,7 @@ export const videosRouter = createTRPCRouter({
         .select({
           ...getTableColumns(videos),
           user: users,
-          viewCount: db.$count(videoViews, eq(videoViews.videoId, videos.id)),
+          viewCount: viewCountSubquery,
           likeCount: db.$count(videoReactions, and(
             eq(videoReactions.videoId, videos.id),
             eq(videoReactions.type, "like"),
@@ -332,7 +332,7 @@ export const videosRouter = createTRPCRouter({
       const playbackId = asset.playback_ids?.[0].id;
       const duration = asset.duration ? Math.round(asset.duration * 1000) : 0;
 
-      // TODO: Potentially find a way to revalidate trackId and tarckStatus as well
+      // TODO: Potentially find a way to revalidate trackId and trackStatus as well
 
       const [updatedVideo] = await db
         .update(videos)
@@ -460,7 +460,7 @@ export const videosRouter = createTRPCRouter({
     const upload = await mux.video.uploads.create({
       new_asset_settings: {
         passthrough: userId,
-        playback_policies: ["public"],
+        playback_policy: ["public"],
         input: [
           {
             generated_subtitles: [

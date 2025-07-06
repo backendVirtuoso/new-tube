@@ -3,7 +3,7 @@ import { trpc } from "@/trpc/client";
 import { DEFAULT_LIMIT } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { InfiniteScroll } from "@/components/infinite-scroll";
-import { ResponsiveModal } from "@/components/reponsive-modal";
+import { ResponsiveModal } from "@/components/responsive-modal";
 import { Loader2Icon, SquareCheckIcon, SquareIcon } from "lucide-react";
 
 interface PlaylistAddModalProps {
@@ -53,11 +53,11 @@ export const PlaylistAddModal = ({ open, onOpenChange, videoId }: PlaylistAddMod
 
   return (
     <ResponsiveModal
-      title="Add a playlist"
+      title="Add to playlist"
       open={open}
       onOpenChange={onOpenChange}
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         {isLoading && (
           <div className="flex justify-center p-4">
             <Loader2Icon className="size-5 animate-spin text-muted-foreground" />

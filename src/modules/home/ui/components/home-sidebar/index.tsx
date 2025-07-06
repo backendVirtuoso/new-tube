@@ -5,7 +5,7 @@ import { PersonalSection } from "./personal-section";
 import { SignedIn } from "@clerk/nextjs";
 import { SubscriptionsSection } from "./subscriptions-section";
 
-export const HomeSiderbar = () => {
+export const HomeSidebar = () => {
   return (
     <Sidebar className="pt-16 z-40 border-none" collapsible="icon">
       <SidebarContent className="bg-background">

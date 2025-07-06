@@ -63,7 +63,7 @@ export const VideoReactions = ({ videoId, likes, dislikes, viewerReaction }: Vid
         onClick={() => dislike.mutate({ videoId })}
         disabled={like.isPending || dislike.isPending}
         variant="secondary"
-        className="rounded-l-none rounded-r-full pr-3"
+        className="rounded-l-none rounded-r-full pl-3"
       >
         <ThumbsDownIcon className={cn("size-5", viewerReaction === "dislike" && "fill-black")} />
         {dislikes}

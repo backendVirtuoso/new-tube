@@ -16,14 +16,14 @@ interface VideoSectionProps {
 export const VideoSection = ({ videoId }: VideoSectionProps) => {
   return (
     <Suspense fallback={<VideoSectionSkeleton />}>
-      <ErrorBoundary fallback={<p>Loading...</p>}>
+      <ErrorBoundary fallback={<p>Error...</p>}>
         <VideoSectionSuspense videoId={videoId} />
       </ErrorBoundary>
     </Suspense>
-  )
+  );
 };
 
-const VideoSectionSkeleton = () => {
+export const VideoSectionSkeleton = () => {
   return (
     <>
       <VideoPlayerSkeleton />
@@ -37,7 +37,7 @@ const VideoSectionSuspense = ({ videoId }: VideoSectionProps) => {
 
   const utils = trpc.useUtils();
   const [video] = trpc.videos.getOne.useSuspenseQuery({ id: videoId });
-  const createView = trpc.videoVidews.create.useMutation({
+  const createView = trpc.videoViews.create.useMutation({
     onSuccess: () => {
       utils.videos.getOne.invalidate({ id: videoId });
     },
@@ -62,5 +62,5 @@ const VideoSectionSuspense = ({ videoId }: VideoSectionProps) => {
       <VideoBanner status={video.muxStatus} />
       <VideoTopRow video={video} />
     </>
-  )
+  );
 };

@@ -15,7 +15,7 @@ interface SuggestionsSectionProps {
 
 export const SuggestionsSection = ({ videoId, isManual }: SuggestionsSectionProps) => {
   return (
-    <Suspense fallback={<SuggestionsSectionsSkeleton />}>
+    <Suspense fallback={<SuggestionsSectionSkeleton />}>
       <ErrorBoundary fallback={<p>Error ...</p>}>
         <SuggestionsSectionSuspense videoId={videoId} isManual={isManual} />
       </ErrorBoundary>
@@ -23,7 +23,7 @@ export const SuggestionsSection = ({ videoId, isManual }: SuggestionsSectionProp
   );
 };
 
-const SuggestionsSectionsSkeleton = () => {
+export const SuggestionsSectionSkeleton = () => {
   return (
     <>
       <div className="hidden md:block space-y-3">

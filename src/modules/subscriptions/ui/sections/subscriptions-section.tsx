@@ -21,12 +21,10 @@ export const SubscriptionsSection = () => {
 
 const SubscriptionsSectionSkeleton = () => {
   return (
-    <div>
-      <div className="flex flex-col gap-4">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <SubscriptionItemSkeleton key={index} />
-        ))}
-      </div>
+    <div className="flex flex-col gap-4">
+      {Array.from({ length: 8 }).map((_, index) => (
+        <SubscriptionItemSkeleton key={index} />
+      ))}
     </div>
   );
 };
@@ -51,7 +49,7 @@ const SubscriptionsSectionSuspense = () => {
   });
 
   return (
-    <div>
+    <>
       <div className="flex flex-col gap-4">
         {subscriptions.pages
           .flatMap((page) => page.items)
@@ -75,6 +73,6 @@ const SubscriptionsSectionSuspense = () => {
         isFetchingNextPage={query.isFetchingNextPage}
         fetchNextPage={query.fetchNextPage}
       />
-    </div>
+    </>
   );
 };

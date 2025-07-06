@@ -61,7 +61,7 @@ export const POST = async (request: Request) => {
     }
 
     case "video.asset.ready": {
-      const data = payload.data as VideoAssetCreatedWebhookEvent["data"];
+      const data = payload.data as VideoAssetReadyWebhookEvent["data"];
       const playbackId = data.playback_ids?.[0].id;
 
       if (!data.upload_id) {
@@ -145,7 +145,7 @@ export const POST = async (request: Request) => {
       const status = data.status;
 
       if (!assetId) {
-        return new Response("Missing upload ID", { status: 400 });
+        return new Response("Missing asset ID", { status: 400 });
       }
 
       await db

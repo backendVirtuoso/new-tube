@@ -5,7 +5,7 @@ import { trpc } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ResponsiveModal } from "@/components/reponsive-modal";
+import { ResponsiveModal } from "@/components/responsive-modal";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
 interface ThumbnailGenerateModalProps {
@@ -37,8 +37,8 @@ export const ThumbnailGenerateModal = ({ videoId, open, onOpenChange }: Thumbnai
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     generateThumbnail.mutate({
-      prompt: values.prompt,
       id: videoId,
+      prompt: values.prompt,
     });
   };
 

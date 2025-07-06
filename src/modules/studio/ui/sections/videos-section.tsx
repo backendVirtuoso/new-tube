@@ -7,7 +7,7 @@ import Link from "next/link";
 import { trpc } from "@/trpc/client";
 import { DEFAULT_LIMIT } from "@/constants";
 import { snakeCaseToTitle } from "@/lib/utils";
-import { Globe2Icon, Lock } from "lucide-react";
+import { Globe2Icon, LockIcon } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { InfiniteScroll } from "@/components/infinite-scroll";
 import { VideoThumbnail } from "@/modules/videos/ui/components/video-thumbnail";
@@ -79,7 +79,7 @@ const VideosSectionSkeleton = () => {
 }
 
 const VideosSectionSuspense = () => {
-  const [vidoes, query] = trpc.studio.getMany.useSuspenseInfiniteQuery({
+  const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery({
     limit: DEFAULT_LIMIT,
   }, {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
@@ -101,7 +101,7 @@ const VideosSectionSuspense = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {vidoes.pages.flatMap((page) => page.items).map((video) => (
+            {videos.pages.flatMap((page) => page.items).map((video) => (
               <Link prefetch href={`/studio/videos/${video.id}`} key={video.id} legacyBehavior>
                 <TableRow className="cursor-pointer">
                   <TableCell className="pl-6">
@@ -125,7 +125,7 @@ const VideosSectionSuspense = () => {
                   <TableCell>
                     <div className="flex items-center">
                       {video.visibility === "private" ? (
-                        <Lock className="size-4 mr-2" />
+                        <LockIcon className="size-4 mr-2" />
                       ) : (
                         <Globe2Icon className="size-4 mr-2" />
                       )}
@@ -162,5 +162,5 @@ const VideosSectionSuspense = () => {
         fetchNextPage={query.fetchNextPage}
       />
     </div>
-  )
-}
+  );
+};

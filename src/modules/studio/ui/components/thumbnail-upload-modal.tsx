@@ -1,4 +1,4 @@
-import { ResponsiveModal } from "@/components/reponsive-modal";
+import { ResponsiveModal } from "@/components/responsive-modal";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { trpc } from "@/trpc/client";
 

@@ -7,13 +7,13 @@ import { PlaylistsSection } from "../sections/playlists-section";
 import { PlaylistCreateModal } from "../components/playlist-create-modal";
 
 export const PlaylistsView = () => {
-  const [createModelOpen, setCreateModelOpen] = useState(false);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
 
   return (
     <div className="max-w-[2400px] mx-auto mb-10 px-4 pt-2.5 flex flex-col gap-y-6">
       <PlaylistCreateModal
-        open={createModelOpen}
-        onOpenChange={setCreateModelOpen}
+        open={createModalOpen}
+        onOpenChange={setCreateModalOpen}
       />
       <div className="flex justify-between items-center">
         <div>
@@ -26,7 +26,7 @@ export const PlaylistsView = () => {
           variant="outline"
           size="icon"
           className="rounded-full"
-          onClick={() => setCreateModelOpen(true)}
+          onClick={() => setCreateModalOpen(true)}
         >
           <PlusIcon />
         </Button>

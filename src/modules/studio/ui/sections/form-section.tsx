@@ -211,7 +211,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
               <p className="text-xs text-muted-foreground">Manage your video details</p>
             </div>
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={update.isPending}>
+              <Button type="submit" disabled={update.isPending || !form.formState.isDirty}>
                 Save
               </Button>
               <DropdownMenu>
@@ -249,7 +249,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                           type="button"
                           className="rounded-full size-6 [&_svg]:size-3"
                           onClick={() => generateTitle.mutate({ id: videoId })}
-                          disabled={generateTitle.isPending}
+                          disabled={generateTitle.isPending || !video.muxTrackId}
                         >
                           {generateTitle.isPending
                             ? <Loader2Icon className="animate-spin" />
@@ -282,7 +282,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                           type="button"
                           className="rounded-full size-6 [&_svg]:size-3"
                           onClick={() => generateDescription.mutate({ id: videoId })}
-                          disabled={generateDescription.isPending}
+                          disabled={generateDescription.isPending || !video.muxTrackId}
                         >
                           {generateDescription.isPending
                             ? <Loader2Icon className="animate-spin" />
@@ -339,7 +339,9 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                               <SparklesIcon className="size-4 mr-1" />
                               AI-generated
                             </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => restoreThumbnail.mutate({ id: videoId })}>
+                            <DropdownMenuItem
+                              onClick={() => restoreThumbnail.mutate({ id: videoId })}
+                            >
                               <RotateCcwIcon className="size-4 mr-1" />
                               Restore
                             </DropdownMenuItem>
@@ -373,9 +375,6 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                             {category.name}
                           </SelectItem>
                         ))}
-                        <SelectItem value="something">
-                          Something
-                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -416,6 +415,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                       </div>
                     </div>
                   </div>
+
                   <div className="flex justify-between items-center">
                     <div className="flex flex-col gap-y-1">
                       <p className="text-muted-foreground text-xs">
@@ -426,6 +426,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                       </p>
                     </div>
                   </div>
+
                   <div className="flex justify-between items-center">
                     <div className="flex flex-col gap-y-1">
                       <p className="text-muted-foreground text-xs">
@@ -438,6 +439,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                   </div>
                 </div>
               </div>
+
               <FormField
                 control={form.control}
                 name="visibility"
@@ -474,6 +476,7 @@ const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
                   </FormItem>
                 )}
               />
+
             </div>
           </div>
         </form>

@@ -1,4 +1,4 @@
-import { ResponsiveModal } from "@/components/reponsive-modal";
+import { ResponsiveModal } from "@/components/responsive-modal";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { trpc } from "@/trpc/client";
 
@@ -12,7 +12,7 @@ export const BannerUploadModal = ({ userId, open, onOpenChange }: BannerUploadMo
   const utils = trpc.useUtils();
 
   const onUploadComplete = () => {
-    utils.studio.getOne.invalidate({ id: userId });
+    utils.users.getOne.invalidate({ id: userId });
     onOpenChange(false);
   };
 

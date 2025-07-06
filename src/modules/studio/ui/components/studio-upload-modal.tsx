@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { Loader2Icon, PlusIcon } from "lucide-react";
 import { trpc } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
-import { ResponsiveModal } from "@/components/reponsive-modal";
+import { ResponsiveModal } from "@/components/responsive-modal";
 import { StudioUploader } from "./studio-uploader";
 
-export const StudioUploadModel = () => {
+export const StudioUploadModal = () => {
   const router = useRouter();
   const utils = trpc.useUtils();
   const create = trpc.videos.create.useMutation({
@@ -31,7 +31,7 @@ export const StudioUploadModel = () => {
   return (
     <>
       <ResponsiveModal
-        title="Upload a vidoe"
+        title="Upload a video"
         open={!!create.data?.url}
         onOpenChange={() => create.reset()}
       >

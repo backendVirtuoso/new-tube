@@ -401,7 +401,6 @@ export const playlistsRouter = createTRPCRouter({
           ...getTableColumns(videos),
           user: users,
           likedAt: viewerVideoReactions.likedAt,
-          viewedAt: viewerVideoReactions.likedAt,
           viewCount: db.$count(videoViews, eq(videoViews.videoId, videos.id)),
           likeCount: db.$count(videoReactions, and(
             eq(videoReactions.videoId, videos.id),

@@ -23,11 +23,11 @@ export const PlaylistHeaderSection = ({ playlistId }: PlaylistHeaderSectionProps
   );
 };
 
-const PlaylistHeaderSectionSkeleton = () => {
+export const PlaylistHeaderSectionSkeleton = () => {
   return (
     <div className="flex flex-col gap-y-2">
       <Skeleton className="h-6 w-24" />
-      <Skeleton className="h-6 w-32" />
+      <Skeleton className="h-4 w-32" />
     </div>
   );
 };
@@ -62,8 +62,9 @@ const PlaylistHeaderSectionSuspense = ({ playlistId }: PlaylistHeaderSectionProp
         className="rounded-full"
         onClick={() => remove.mutate({ id: playlistId })}
         disabled={remove.isPending}
-      />
-      <Trash2Icon />
+      >
+        <Trash2Icon />
+      </Button>
     </div>
   );
 };

@@ -32,7 +32,7 @@ export const videoReactionsRouter = createTRPCRouter({
         return deletedViewerReaction;
       }
 
-      const [createdVideoView] = await db
+      const [createdVideoReaction] = await db
         .insert(videoReactions)
         .values({ userId, videoId, type: "like" })
         .onConflictDoUpdate({
@@ -41,7 +41,7 @@ export const videoReactionsRouter = createTRPCRouter({
         })
         .returning();
 
-      return createdVideoView;
+      return createdVideoReaction;
     }),
 
   dislike: protectedProcedure
@@ -71,7 +71,7 @@ export const videoReactionsRouter = createTRPCRouter({
         return deletedViewerReaction;
       }
 
-      const [createdVideoView] = await db
+      const [createdVideoReaction] = await db
         .insert(videoReactions)
         .values({ userId, videoId, type: "dislike" })
         .onConflictDoUpdate({
@@ -80,6 +80,6 @@ export const videoReactionsRouter = createTRPCRouter({
         })
         .returning();
 
-      return createdVideoView;
+      return createdVideoReaction;
     }),
 });

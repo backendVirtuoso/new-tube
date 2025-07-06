@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { THUMBNAIL_FALLBACK } from "@/modules/videos/constants";
 import { PlaylistGetManyOutput } from "@/modules/playlists/types";
-import { PlaylistInfo } from "./playlist-info";
+import { PlaylistInfo, PlaylistInfoSkeleton } from "./playlist-info";
 import { PlaylistThumbnail, PlaylistThumbnailSkeleton } from "./playlist-thumbnail";
 
 interface PlaylistGridCardProps {
@@ -12,7 +12,7 @@ export const PlaylistGridCardSkeleton = () => {
   return (
     <div className="flex flex-col gap-2 w-full">
       <PlaylistThumbnailSkeleton />
-      <PlaylistGridCardSkeleton />
+      <PlaylistInfoSkeleton />
     </div>
   );
 };

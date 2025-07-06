@@ -42,9 +42,9 @@ export const SubscriptionsSection = () => {
     <SidebarGroup>
       <SidebarGroupLabel>Subscriptions</SidebarGroupLabel>
       <SidebarGroupContent>
-        {isLoading && <LoadingSkeleton />}
         <SidebarMenu>
-          {data?.pages.flatMap((page) => page.items).map((subscription) => (
+          {isLoading && <LoadingSkeleton />}
+          {!isLoading && data?.pages.flatMap((page) => page.items).map((subscription) => (
             <SidebarMenuItem key={`${subscription.creatorId}-${subscription.viewerId}`}>
               <SidebarMenuButton
                 tooltip={subscription.user.name}

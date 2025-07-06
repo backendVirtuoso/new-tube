@@ -26,8 +26,8 @@ export const SubscriptionItemSkeleton = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const SubscriptionItem = ({ name, imageUrl, subscriberCount, onUnsubscribe, disabled }: SubscriptionItemProps) => {
   return (
@@ -40,23 +40,25 @@ export const SubscriptionItem = ({ name, imageUrl, subscriberCount, onUnsubscrib
 
       <div className="flex-1">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm">
-            {name}
-          </h3>
-          <p className="text-xs text-muted-foreground">
-            {subscriberCount.toLocaleString()} subscribers
-          </p>
-        </div>
+          <div>
+            <h3 className="text-sm">
+              {name}
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              {subscriberCount.toLocaleString()} subscribers
+            </p>
+          </div>
 
-        <SubscriptionButton
-          size="sm"
-          onClick={(e) => {
-            e.preventDefault();
-            onUnsubscribe();
-          }}
-          disabled={disabled}
-          isSubscribed
-        />
+          <SubscriptionButton
+            size="sm"
+            onClick={(e) => {
+              e.preventDefault();
+              onUnsubscribe();
+            }}
+            disabled={disabled}
+            isSubscribed
+          />
+        </div>
       </div>
     </div>
   );

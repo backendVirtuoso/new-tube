@@ -33,17 +33,17 @@ export const VideoDescription = ({ compactViews, expandedVews, compactDate, expa
         )}>
           {description || "No description"}
         </p>
-      </div>
-      <div className="flex items-center gap-1 mt-4 text-sm font-medium">
-        {isExpanded ? (
-          <>
-            Show less <ChevronUpIcon className="size-4" />
-          </>
-        ) : (
-          <>
-            Show more <ChevronDownIcon className="size-4" />
-          </>
-        )}
+        <div className="flex items-center gap-1 mt-4 text-sm font-medium">
+          {isExpanded ? (
+            <>
+              Show less <ChevronUpIcon className="size-4" />
+            </>
+          ) : (
+            <>
+              Show more <ChevronDownIcon className="size-4" />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
